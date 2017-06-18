@@ -6,10 +6,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 /**
  * Created by Administrator on 2017/6/16.
@@ -18,7 +19,7 @@ import android.widget.RelativeLayout;
 public class BottomPopupWindowView extends LinearLayout{
 
     private FrameLayout frameLayout;
-    private LinearLayout content_view;
+    private FrameLayout content_view;
     private RelativeLayout popup_bg;
     private boolean mDrawable=true;
     private View bottomPopouView;
@@ -49,9 +50,17 @@ public class BottomPopupWindowView extends LinearLayout{
         super(context, attrs, defStyleAttr);
         bottomPopouView= LayoutInflater.from(getContext()).inflate(R.layout.layout_bottom_popup,null);
         frameLayout=(FrameLayout)bottomPopouView.findViewById(R.id.bottom_view);
-        content_view=(LinearLayout)bottomPopouView.findViewById(R.id.content_view);
+        content_view=(FrameLayout)bottomPopouView.findViewById(R.id.content_view);
         popup_bg=(RelativeLayout)bottomPopouView.findViewById(R.id.popup_bg);
         addView(bottomPopouView);
+        popup_bg.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"text",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     @Override
@@ -66,14 +75,18 @@ public class BottomPopupWindowView extends LinearLayout{
     public void showPopouView(BottomPopupWindowView bottomPopupWindowView){
         if(contextView!=null){
             popup_bg.setVisibility(View.VISIBLE);
+            popup_bg.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.bp_bottom_bg_in));
             bottomPopupWindowView.setLayoutParams(new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT));
             content_view.addView(contextView,0);
+            content_view.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.bp_bottom_view_in));
         }
     }
 
     public void dismssPopupView(BottomPopupWindowView bottomPopupWindowView){
+        content_view.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.bp_bottom_view_out));
         content_view.removeAllViews();
+        popup_bg.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.bp_bottom_bg_out));
         popup_bg.setVisibility(View.GONE);
         RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,getViewHeight(bottomPopupWindowView));
@@ -88,7 +101,7 @@ public class BottomPopupWindowView extends LinearLayout{
         return view.getMeasuredHeight();
     }
 
-    
+
 
 
 }
