@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.bottom_popup:
-                Toast.makeText(MainActivity.this,"bottom_popup",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this,"bottom_popup",Toast.LENGTH_SHORT).show();
                 bottomPopupWindowView.dismssPopupView(bottomPopupWindowView);
                 break;
             case R.id.text:
-                Toast.makeText(MainActivity.this,"text",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this,"text",Toast.LENGTH_SHORT).show();
                 bottomPopupWindowView.showPopouView(bottomPopupWindowView);
                 break;
         }
