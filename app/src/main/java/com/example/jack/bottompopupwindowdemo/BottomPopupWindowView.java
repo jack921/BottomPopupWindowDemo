@@ -62,6 +62,8 @@ public class BottomPopupWindowView extends LinearLayout{
         });
     }
 
+
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -72,6 +74,7 @@ public class BottomPopupWindowView extends LinearLayout{
     }
 
     public void showPopouView(BottomPopupWindowView bottomPopupWindowView){
+
         if(contextView!=null){
             popup_bg.setVisibility(View.VISIBLE);
             popup_bg.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.bp_bottom_bg_in));

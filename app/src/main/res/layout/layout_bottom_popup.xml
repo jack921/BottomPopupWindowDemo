@@ -5,13 +5,6 @@
     android:layout_height="wrap_content"
     android:background="#70000000">
 
-    <FrameLayout
-        android:id="@+id/bottom_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"></FrameLayout>
-
     <RelativeLayout
         android:id="@+id/popup_bg"
         android:layout_width="match_parent"
@@ -24,6 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_view"
-        android:orientation="horizontal"></FrameLayout>
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"></FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"></FrameLayout>
 
 </RelativeLayout>
