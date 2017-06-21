@@ -83,26 +83,26 @@ public class BottomPopupWindowView extends LinearLayout{
         }
     }
 
-    public void dismssPopupView(BottomPopupWindowView bottomPopupWindowView){
+    public void dismssPopupView(final BottomPopupWindowView bottomPopupWindowView){
         content_view.setVisibility(View.GONE);
         Animation animation=AnimationUtils.loadAnimation(getContext(),R.anim.bp_bottom_view_out);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {}
             @Override
-            public void onAnimationEnd(Animation animation) {}
+            public void onAnimationRepeat(Animation animation) {}
             @Override
-            public void onAnimationRepeat(Animation animation) {
+            public void onAnimationEnd(Animation animation) {
                 content_view.removeAllViews();
+                popup_bg.setVisibility(View.GONE);
+                popup_bg.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.bp_bottom_bg_out));
+                RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,getViewHeight(bottomPopupWindowView));
+                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,-1);
+                bottomPopupWindowView.setLayoutParams(layoutParams);
             }
         });
         content_view.setAnimation(animation);
-        popup_bg.setVisibility(View.GONE);
-        popup_bg.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.bp_bottom_bg_out));
-        RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT,getViewHeight(bottomPopupWindowView));
-        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,-1);
-        bottomPopupWindowView.setLayoutParams(layoutParams);
     }
 
     public int getViewHeight(View view){
