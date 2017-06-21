@@ -57,12 +57,10 @@ public class BottomPopupWindowView extends LinearLayout{
         popup_bg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"text",Toast.LENGTH_SHORT).show();
+                dismssPopupView();
             }
         });
     }
-
-
 
     @Override
     protected void onDraw(Canvas canvas) {

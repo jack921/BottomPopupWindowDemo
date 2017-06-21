@@ -3,13 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#70000000">
+    android:background="#707A7A7A">
 
     <RelativeLayout
         android:id="@+id/popup_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#70000000"
+        android:background="#707A7A7A"
         android:layout_above="@+id/bottom_view"></RelativeLayout>
 
     <FrameLayout
@@ -17,14 +17,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_view"
-        android:orientation="horizontal"
-        android:background="@color/colorPrimary"></FrameLayout>
+        android:orientation="horizontal"></FrameLayout>
 
     <FrameLayout
         android:id="@+id/bottom_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"></FrameLayout>
+        android:layout_alignParentBottom="true"></FrameLayout>
 
 </RelativeLayout>
