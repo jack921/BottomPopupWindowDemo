@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.bottom_popup:
-                bottomPopupWindowView.dismssPopupView(bottomPopupWindowView);
+                bottomPopupWindowView.dismssPopupView();
                 break;
             case R.id.text:
-                bottomPopupWindowView.showPopouView(bottomPopupWindowView);
+                bottomPopupWindowView.showPopouView();
                 break;
         }
     }

@@ -73,12 +73,11 @@ public class BottomPopupWindowView extends LinearLayout{
         }
     }
 
-    public void showPopouView(BottomPopupWindowView bottomPopupWindowView){
-
+    public void showPopouView(){
         if(contextView!=null){
             popup_bg.setVisibility(View.VISIBLE);
             popup_bg.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.bp_bottom_bg_in));
-            bottomPopupWindowView.setLayoutParams(new RelativeLayout.LayoutParams(
+            ((BottomPopupWindowView)this).setLayoutParams(new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT));
             content_view.addView(contextView,0);
             content_view.setVisibility(View.VISIBLE);
@@ -86,7 +85,7 @@ public class BottomPopupWindowView extends LinearLayout{
         }
     }
 
-    public void dismssPopupView(final BottomPopupWindowView bottomPopupWindowView){
+    public void dismssPopupView(){
         content_view.setVisibility(View.GONE);
         Animation animation=AnimationUtils.loadAnimation(getContext(),R.anim.bp_bottom_view_out);
         animation.setAnimationListener(new Animation.AnimationListener() {
@@ -100,9 +99,9 @@ public class BottomPopupWindowView extends LinearLayout{
                 popup_bg.setVisibility(View.GONE);
                 popup_bg.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.bp_bottom_bg_out));
                 RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.MATCH_PARENT,getViewHeight(bottomPopupWindowView));
+                        RelativeLayout.LayoutParams.MATCH_PARENT,getViewHeight((BottomPopupWindowView)BottomPopupWindowView.this));
                 layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,-1);
-                bottomPopupWindowView.setLayoutParams(layoutParams);
+                ((BottomPopupWindowView)BottomPopupWindowView.this).setLayoutParams(layoutParams);
             }
         });
         content_view.setAnimation(animation);
