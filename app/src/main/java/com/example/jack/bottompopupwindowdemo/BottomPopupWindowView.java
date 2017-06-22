@@ -1,5 +1,6 @@
 package com.example.jack.bottompopupwindowdemo;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.support.annotation.Nullable;
@@ -30,7 +31,11 @@ public class BottomPopupWindowView extends LinearLayout{
     private float y1;
     private float y2;
     private float minVelocity=0;
+    private AnimatorListener animatorListener;
 
+    public void setAnimatorListener(AnimatorListener animatorListener) {
+        this.animatorListener = animatorListener;
+    }
 
     public void setBaseView(View baseView){
         this.baseView=baseView;
@@ -107,6 +112,7 @@ public class BottomPopupWindowView extends LinearLayout{
 
     public void showPopouView(){
         if(contextView!=null){
+            startAnimation();
             popup_bg.setVisibility(View.VISIBLE);
             popup_bg.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.bp_bottom_bg_in));
             ((BottomPopupWindowView)this).setLayoutParams(new RelativeLayout.LayoutParams(
@@ -114,10 +120,12 @@ public class BottomPopupWindowView extends LinearLayout{
             content_view.addView(contextView,0);
             content_view.setVisibility(View.VISIBLE);
             content_view.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.bp_bottom_view_in));
+
         }
     }
 
     public void dismssPopupView(){
+        endAnimation();
         content_view.setVisibility(View.GONE);
         Animation animation=AnimationUtils.loadAnimation(getContext(),R.anim.bp_bottom_view_out);
         animation.setAnimationListener(new Animation.AnimationListener() {
@@ -144,6 +152,39 @@ public class BottomPopupWindowView extends LinearLayout{
         int height =View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED);
         view.measure(width,height);
         return view.getMeasuredHeight();
+    }
+
+    public void startAnimation(){
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(0,50);
+        valueAnimator.setDuration(250);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                if(animatorListener!=null){
+                    animatorListener.startValue((int) valueAnimator.getAnimatedValue());
+                }
+            }
+        });
+        valueAnimator.start();
+    }
+
+    public void endAnimation() {
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(50, 0);
+        valueAnimator.setDuration(250);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                if(animatorListener!=null){
+                    animatorListener.endValue((int) valueAnimator.getAnimatedValue());
+                }
+            }
+        });
+        valueAnimator.start();
+    }
+
+    interface AnimatorListener{
+        void startValue(int value);
+        void endValue(int value);
     }
 
 }

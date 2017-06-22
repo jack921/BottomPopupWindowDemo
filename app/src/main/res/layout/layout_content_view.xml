@@ -22,6 +22,7 @@
             android:src="@mipmap/ic_pic"/>
 
         <ImageView
+            android:id="@+id/ic_cancel"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
