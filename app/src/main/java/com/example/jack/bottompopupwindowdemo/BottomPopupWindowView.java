@@ -5,13 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 /**
  * Created by Administrator on 2017/6/16.
@@ -20,12 +21,16 @@ import android.widget.Toast;
 public class BottomPopupWindowView extends LinearLayout{
 
     private FrameLayout frameLayout;
-    private FrameLayout content_view;
+    private ContentView content_view;
     private RelativeLayout popup_bg;
     private boolean mDrawable=true;
     private View bottomPopouView;
     private View contextView;
     private View baseView;
+    private float y1;
+    private float y2;
+    private float minVelocity=0;
+
 
     public void setBaseView(View baseView){
         this.baseView=baseView;
@@ -49,17 +54,41 @@ public class BottomPopupWindowView extends LinearLayout{
 
     public BottomPopupWindowView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        minVelocity=ViewConfiguration.get(getContext()).getScaledTouchSlop();
         bottomPopouView= LayoutInflater.from(getContext()).inflate(R.layout.layout_bottom_popup,null);
         frameLayout=(FrameLayout)bottomPopouView.findViewById(R.id.bottom_view);
-        content_view=(FrameLayout)bottomPopouView.findViewById(R.id.content_view);
+        content_view=(ContentView)bottomPopouView.findViewById(R.id.content_view);
         popup_bg=(RelativeLayout)bottomPopouView.findViewById(R.id.popup_bg);
         addView(bottomPopouView);
+
         popup_bg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismssPopupView();
             }
         });
+
+        content_view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view){}
+        });
+
+        content_view.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    y1 = motionEvent.getY();
+                }
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    y2 = motionEvent.getY();
+                    if((y2-y1)>minVelocity){
+                        dismssPopupView();
+                    }
+                }
+                return false;
+            }
+        });
+
     }
 
     @Override

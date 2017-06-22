@@ -12,13 +12,13 @@
         android:background="#707A7A7A"
         android:layout_above="@+id/bottom_view"></RelativeLayout>
 
-    <FrameLayout
+    <com.example.jack.bottompopupwindowdemo.ContentView
         android:id="@+id/content_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_view"
-        android:clickable="false"
-        android:orientation="horizontal"></FrameLayout>
+        android:orientation="horizontal">
+    </com.example.jack.bottompopupwindowdemo.ContentView>
 
     <FrameLayout
         android:id="@+id/bottom_view"
