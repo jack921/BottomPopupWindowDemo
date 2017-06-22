@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         text=(TextView)findViewById(R.id.text);
         bottomView=LayoutInflater.from(this).inflate(R.layout.layout_bottom_view,null);
         text.setOnClickListener(this);
+        ((TextView)bottomView.findViewById(R.id.promptly_buy)).setOnClickListener(this);
         bottomPopupWindowView=(BottomPopupWindowView)findViewById(R.id.bottom_popup);
         bottomPopupWindowView.setOnClickListener(this);
         bottomPopupWindowView.setBaseView(bottomView);
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.bottom_popup:
+            case R.id.promptly_buy:
                 bottomPopupWindowView.dismssPopupView();
                 break;
             case R.id.text:

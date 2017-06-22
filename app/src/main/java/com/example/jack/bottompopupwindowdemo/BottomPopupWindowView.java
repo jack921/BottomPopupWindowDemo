@@ -73,6 +73,11 @@ public class BottomPopupWindowView extends LinearLayout{
             public void onClick(View view){}
         });
 
+        frameLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view){}
+        });
+
         content_view.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
