@@ -11,7 +11,7 @@ import com.jack.bottompopupwindowview.AnimatorListener;
 import com.jack.bottompopupwindowview.BottomPopupWindowView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AnimatorListener {
-    
+
     private BottomPopupWindowView bottomPopupWindowView;
     private View contentView;
     private View bottomView;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainView=(LinearLayout)findViewById(R.id.main_view);
+
         bottomView=LayoutInflater.from(this).inflate(R.layout.layout_bottom_view,null);
         (bottomView.findViewById(R.id.promptly_buy)).setOnClickListener(this);
         (findViewById(R.id.guige)).setOnClickListener(this);
