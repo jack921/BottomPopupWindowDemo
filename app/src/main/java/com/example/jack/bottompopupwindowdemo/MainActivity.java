@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, BottomPopupWindowView.AnimatorListener {
+import com.jack.bottompopupwindowview.AnimatorListener;
+import com.jack.bottompopupwindowview.BottomPopupWindowView;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AnimatorListener {
     private BottomPopupWindowView bottomPopupWindowView;
     private View contentView;
     private View bottomView;

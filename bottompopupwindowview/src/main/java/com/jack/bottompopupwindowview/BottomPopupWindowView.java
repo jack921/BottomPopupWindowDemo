@@ -1,4 +1,4 @@
-package com.example.jack.bottompopupwindowdemo;
+package com.jack.bottompopupwindowview;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 /**
- * Created by Administrator on 2017/6/16.
+ * Created by Jack on 2017/6/16.
  */
 
 public class BottomPopupWindowView extends LinearLayout{
@@ -180,11 +180,6 @@ public class BottomPopupWindowView extends LinearLayout{
             }
         });
         valueAnimator.start();
-    }
-
-    interface AnimatorListener{
-        void startValue(int value);
-        void endValue(int value);
     }
 
 }

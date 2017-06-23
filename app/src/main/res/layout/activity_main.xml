@@ -54,12 +54,12 @@
 
     </LinearLayout>
 
-    <com.example.jack.bottompopupwindowdemo.BottomPopupWindowView
+    <com.jack.bottompopupwindowview.BottomPopupWindowView
         android:id="@+id/bottom_popup"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@android:color/transparent"
         android:layout_alignParentBottom="true">
-    </com.example.jack.bottompopupwindowdemo.BottomPopupWindowView>
+    </com.jack.bottompopupwindowview.BottomPopupWindowView>
 
 </RelativeLayout>

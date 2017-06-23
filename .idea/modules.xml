@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BottomPopupWindowDemo.iml" filepath="$PROJECT_DIR$/BottomPopupWindowDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bottompopupwindowview/bottompopupwindowview.iml" filepath="$PROJECT_DIR$/bottompopupwindowview/bottompopupwindowview.iml" />
     </modules>
   </component>
 </project>
