@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, BottomPopupWindowView.AnimatorListener {
     private BottomPopupWindowView bottomPopupWindowView;
-    private TextView text;
     private View contentView;
     private View bottomView;
     private LinearLayout mainView;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void startValue(int value) {
-        setMargins (mainView,value-15,value,value-15,value);
+        setMargins (mainView,value-10,value,value-10,value);
     }
 
     @Override

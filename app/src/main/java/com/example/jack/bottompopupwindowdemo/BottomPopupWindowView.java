@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
 public class BottomPopupWindowView extends LinearLayout{
 
     private FrameLayout frameLayout;
-    private ContentView content_view;
+    private FrameLayout content_view;
     private RelativeLayout popup_bg;
     private boolean mDrawable=true;
     private View bottomPopouView;
@@ -62,7 +62,7 @@ public class BottomPopupWindowView extends LinearLayout{
         minVelocity=ViewConfiguration.get(getContext()).getScaledTouchSlop();
         bottomPopouView= LayoutInflater.from(getContext()).inflate(R.layout.layout_bottom_popup,null);
         frameLayout=(FrameLayout)bottomPopouView.findViewById(R.id.bottom_view);
-        content_view=(ContentView)bottomPopouView.findViewById(R.id.content_view);
+        content_view=(FrameLayout)bottomPopouView.findViewById(R.id.content_view);
         popup_bg=(RelativeLayout)bottomPopouView.findViewById(R.id.popup_bg);
         addView(bottomPopouView);
 
@@ -155,7 +155,7 @@ public class BottomPopupWindowView extends LinearLayout{
     }
 
     public void startAnimation(){
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(0,50);
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(0,40);
         valueAnimator.setDuration(250);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -169,7 +169,7 @@ public class BottomPopupWindowView extends LinearLayout{
     }
 
     public void endAnimation() {
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(50, 0);
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(40,0);
         valueAnimator.setDuration(250);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
