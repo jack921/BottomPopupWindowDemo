@@ -11,6 +11,7 @@ import com.jack.bottompopupwindowview.AnimatorListener;
 import com.jack.bottompopupwindowview.BottomPopupWindowView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AnimatorListener {
+    
     private BottomPopupWindowView bottomPopupWindowView;
     private View contentView;
     private View bottomView;
