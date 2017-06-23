@@ -69,7 +69,7 @@ public class BottomPopupWindowView extends LinearLayout{
         popup_bg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismssPopupView();
+                disMissPopupView();
             }
         });
 
@@ -92,7 +92,7 @@ public class BottomPopupWindowView extends LinearLayout{
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP){
                     y2 = motionEvent.getY();
                     if((y2-y1)>minVelocity){
-                        dismssPopupView();
+                        disMissPopupView();
                     }
                 }
                 return false;
@@ -124,7 +124,7 @@ public class BottomPopupWindowView extends LinearLayout{
         }
     }
 
-    public void dismssPopupView(){
+    public void disMissPopupView(){
         endAnimation();
         content_view.setVisibility(View.GONE);
         Animation animation=AnimationUtils.loadAnimation(getContext(),R.anim.bp_bottom_view_out);

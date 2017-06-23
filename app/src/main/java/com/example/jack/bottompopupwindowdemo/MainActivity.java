@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(view.getId()){
             case R.id.promptly_buy:
             case R.id.ic_cancel:
-                bottomPopupWindowView.dismssPopupView();
+                bottomPopupWindowView.disMissPopupView();
                 break;
             case R.id.guige:
                 bottomPopupWindowView.showPopouView();
